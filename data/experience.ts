@@ -16,7 +16,7 @@ export const items = [
       icon: FreelanceLogo,
       date: "septembre 2024 - Aujourd'hui",
       location: "Paris, France", 
-      description: "Plusieurs projets en cours, je vous en parle bientôt !",
+      description: "Plusieurs projets sont en cours, je vous en parle bientôt !",
       technologies: [
         {"tag": "Web", "highlighted": true},
         {"tag": "Mobile", "highlighted": true},

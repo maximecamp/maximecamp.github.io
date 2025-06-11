@@ -58,7 +58,7 @@ export default function Experience({ sectionTitle, items }: ExperienceProps) {
                     </h3>
                   )}
                   {item.category && (
-                    <div className="block sm:hidden text-xs font-medium text-blue-600 dark:text-blue-400 mt-1">
+                    <div className="block sm:hidden text-sm font-medium text-blue-600 dark:text-blue-400 mt-1">
                       {item.category}
                     </div>
                   )}
@@ -68,19 +68,19 @@ export default function Experience({ sectionTitle, items }: ExperienceProps) {
                     </div>
                   )}
                   {item.location && (
-                    <div className="text-sm font-medium text-gray-500 dark:text-gray-500 mt-1">
+                    <div className="text-base font-medium text-gray-500 dark:text-gray-500 mt-1">
                       {item.location}
                     </div>
                   )}
                 </div>
                 <div className="text-left sm:text-right mt-2 sm:mt-0 flex-shrink-0 sm:ml-4">
                   {item.date && (
-                    <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    <div className="text-base font-medium text-gray-500 dark:text-gray-400">
                       {item.date}
                     </div>
                   )}
                   {item.category && (
-                    <div className="hidden sm:block text-sm font-medium text-blue-600 dark:text-blue-400 mt-1">
+                    <div className="hidden sm:block text-base font-medium text-blue-600 dark:text-blue-400 mt-1">
                       {item.category}
                     </div>
                   )}
@@ -90,7 +90,7 @@ export default function Experience({ sectionTitle, items }: ExperienceProps) {
               <div className={`grid transition-all duration-300 ease-in-out ${expanded[index] ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                 <div className="overflow-hidden">
                   {item.description && item.description.trim() !== '' && (
-                    <p className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line py-2">
+                    <p className="text-base text-gray-700 dark:text-gray-300 whitespace-pre-line py-2">
                       {item.description}
                     </p>
                   )}
@@ -100,7 +100,7 @@ export default function Experience({ sectionTitle, items }: ExperienceProps) {
               {item.description && item.description.trim() !== '' && (
                 <button
                   onClick={() => toggleExpand(index)}
-                  className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-400 cursor-pointer mt-2"
+                  className="text-base font-medium text-blue-600 hover:underline dark:text-blue-400 cursor-pointer mt-2"
                 >
                   {expanded[index] ? 'Voir moins' : 'Voir plus'}
                 </button>
@@ -111,7 +111,7 @@ export default function Experience({ sectionTitle, items }: ExperienceProps) {
                   {item.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className={`text-xs px-3 py-1 rounded-full ${tech.highlighted ? "bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800" : "bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600"}`}
+                      className={`text-sm px-3 py-1 rounded-full ${tech.highlighted ? "bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800" : "bg-gray-50 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600"}`}
                     >
                       {tech.tag}
                     </span>

@@ -36,13 +36,13 @@ export default function ContactCard({ data }: ContactCardProps) {
                         href={button.url}
                         target={button.url.startsWith('http') ? '_blank' : undefined}
                         rel={button.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className={`w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-sm font-semibold rounded-full shadow-md transition-all duration-200 ease-in-out ${button.style}`}
+                        className={`w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-base font-semibold rounded-full shadow-md transition-all duration-200 ease-in-out ${button.style}`}
                     >
                         {button.text}
                     </a>
                 ))}
             </div>
-            <div className="text-center text-sm text-gray-500 dark:text-gray-400 space-y-1">
+            <div className="text-center text-base text-gray-500 dark:text-gray-400 space-y-1">
                 <p>
                     <a href={`mailto:${data.email}`} className="hover:underline">{data.email}</a>
                     {data.phone && data.phone !== "" && (
@@ -53,7 +53,7 @@ export default function ContactCard({ data }: ContactCardProps) {
                     )}
                 </p>
                 <p className="font-medium pt-2">
-                    <span className="text-green-600 dark:text-green-500 ">
+                    <span className="text-green-900 dark:text-green-600 ">
                         {data.availabilityHighlighted}
                     </span>
                     <span className="text-gray-500 dark:text-gray-400">

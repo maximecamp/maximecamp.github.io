@@ -41,7 +41,7 @@ export default function SideProjects({ sectionTitle, items }: SideProjectsProps)
                 </a> */}
                 {item.title}
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-base text-gray-600 dark:text-gray-400">
                 {item.description}
               </p>
             </div>

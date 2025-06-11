@@ -32,7 +32,7 @@ export const data = {
       items: [
         { category: "Frontend", skills: "TypeScript, React, Next.js, Tailwind CSS" },
         { category: "Backend", skills: "Node.js, Express" },
-        { category: "Bases de données", skills: "PostgreSQL, MongoDB, Redis, MySQL" },
+        { category: "Bases de données", skills: "PostgreSQL, MongoDB, MySQL, Redis" },
         { category: "Mobile", skills: "Flutter, React Native" },
         { category: "DevOps", skills: "Git, Docker, Kubernetes, CI/CD, Gitlab, AWS, Azure, GCP" },
       ],
