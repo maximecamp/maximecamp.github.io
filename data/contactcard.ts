@@ -9,5 +9,5 @@ export const data = {
     email: "maximecamp.pro@gmail.com",
     phone: "",
     availabilityHighlighted: "Disponible immédiatement",
-    availabilityNormal: " pour des projets dans le monde entier • Réponse rapide dans les 24 heures",
+    availabilityNormal: " pour des projets dans le monde entier • Réponse rapide dans les 24h",
   };
