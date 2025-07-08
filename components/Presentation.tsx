@@ -44,7 +44,7 @@ export default function Presentation({ data }: PresentationProps) {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        {/* About Me & CV */}
+        {/* About Me & CV 
         <div className="space-y-6">
           <div className="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out h-full">
             <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">{data.about.title}</h3>
@@ -56,6 +56,7 @@ export default function Presentation({ data }: PresentationProps) {
             </p>
           </div>
         </div>
+        */}
 
         {/* Services */}
         <div className="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out">
@@ -83,20 +84,42 @@ export default function Presentation({ data }: PresentationProps) {
             ))}
           </ul>
         </div>
+      </div>
 
+      <div className="grid grid-cols-1 gap-6 mt-6">
         {/* Tech Stack */}
         <div className="p-5 rounded-xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-3">{data.techStack.title}</h3>
-          <div className="flex flex-wrap gap-2">
+            
+          <div className="flex flex-wrap gap-2 mt-8">
+              <span className="text-sm px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                Web
+              </span>
+              <span className="text-sm px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                Mobile
+              </span>
+              <span className="text-sm px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                Frontend
+              </span>
+              <span className="text-sm px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                Backend
+              </span>
+              <span className="text-sm px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                API
+              </span>
+              
             {data.techStack.items.flatMap(item => item.skills.split(', ')).map((skill, index) => (
               <span key={index} className="text-sm px-2.5 py-1 bg-gray-50 dark:bg-gray-700 rounded-full text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600">
                 {skill}
               </span>
             ))}
           </div>
+          <p className="text-base text-gray-600 dark:text-gray-400 mt-8">
+              {data.about.description2}
+            </p>
         </div>
-
       </div>
+      
 
       <div className="mt-12 flex justify-center">
         <CVDownloadButton url={data.cv.url} text={data.cv.text} />

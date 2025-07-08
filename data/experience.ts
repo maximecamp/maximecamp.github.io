@@ -9,14 +9,14 @@ import ObadiaLogo from "@/public/images/svg/obadia.svg";
 export const sectionTitle = "Expériences";
 export const items = [
     {
-      title: "Développeur fullstack",
-      subtitle: "", 
-      category: "FREELANCE",
+      title: "Freelance",
+      subtitle: "Développeur fullstack", 
+      category: "",
       link: "",
       icon: FreelanceLogo,
       date: "septembre 2024 - Aujourd'hui",
       location: "Paris, France", 
-      description: "Plusieurs projets sont en cours, je vous en parle bientôt !",
+      description: "",
       technologies: [
         {"tag": "Web", "highlighted": true},
         {"tag": "Mobile", "highlighted": true},
@@ -30,7 +30,7 @@ export const items = [
       ]
     },
     {
-      title: "Docaposte La Poste",
+      title: "Docaposte - La Poste",
       subtitle: "Développeur fullstack",
       category: "LOGISTIQUE & SUPPLY CHAIN",
       link: "",
@@ -87,6 +87,7 @@ export const items = [
         {"tag": "Gestion de performance", "highlighted": true},
         {"tag": "Node.js", "highlighted": false},
         {"tag": "Express", "highlighted": false},
+        {"tag": "Typescript", "highlighted": false},
         {"tag": "MySQL", "highlighted": false},
         {"tag": "Doctrine", "highlighted": false},
       ]

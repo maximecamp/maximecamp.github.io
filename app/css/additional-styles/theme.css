@@ -49,3 +49,32 @@
 .stellar-carousel .swiper-slide.swiper-slide-active {
     @apply opacity-100;
 }
+
+.bg-md3 { 
+    /* background-color: #f4eae7; */
+    background-color: #fbfbff;
+}
+
+.bg-md3-block {
+    /* background-color: #f0dcd8; */
+    background-color: #f2f1f8;
+}
+
+.accent-color-md3 {
+    color: #dc8a78;
+}
+
+.text-md3 {
+    color: #dc8a78;
+}
+
+.border-md3 {
+    border-color: #dc8a78;
+}
+
+.bg-button-md3 {
+    background-color: #dc8a78;
+}
+
+/* Text color */
+/* text-gray-900 */

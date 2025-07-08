@@ -32,8 +32,8 @@ export default function RootLayout({
       >
         <Theme>
           <div className="overflow-hidden supports-[overflow:clip]:overflow-clip">
-            <div className="max-w-[900px] mx-auto">
-              <div className="w-full bg-white dark:bg-gray-900 border-x border-gray-100 dark:border-gray-800 box-content">
+            <div className="max-w-[1000px] mx-auto">
+              <div className="w-full bg-gray-50 dark:bg-gray-900 dark:border-x dark:border-gray-800 box-content">
                 <div className="px-3 md:px-16">
                   <div className="flex flex-col min-h-screen">
                     <Header />

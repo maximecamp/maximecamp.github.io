@@ -18,7 +18,7 @@ export default function ContactCard({ data }: ContactCardProps) {
     return (
       <section id="contact">
         {/* Contact Card */}
-        <div className="mt-12 p-8 bg-gray-50 dark:bg-gray-800/50 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700/50">
+        <div className="mt-12 p-8 bg-white dark:bg-gray-800/50 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700/50">
             <div className="text-center">
                 <h3 className="font-inter-tight text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
                     {data.title}
@@ -43,8 +43,8 @@ export default function ContactCard({ data }: ContactCardProps) {
                 ))}
             </div>
             <div className="text-center text-base text-gray-500 dark:text-gray-400 space-y-1">
-                <p>
-                    <a href={`mailto:${data.email}`} className="hover:underline">{data.email}</a>
+                <p className="pt-4">
+                    <a href={`mailto:${data.email}`} className="hover:underline text-black dark:text-white">{data.email}</a>
                     {data.phone && data.phone !== "" && (
                     <>
                         <span className="text-gray-300 dark:text-gray-600 mx-2">|</span>
@@ -52,8 +52,8 @@ export default function ContactCard({ data }: ContactCardProps) {
                     </>
                     )}
                 </p>
-                <p className="font-medium pt-2">
-                    <span className="text-green-900 dark:text-green-600 ">
+                <p className="font-medium pt-6">
+                    <span className="text-green-700 dark:text-green-600 font-semibold">
                         {data.availabilityHighlighted}
                     </span>
                     <span className="text-gray-500 dark:text-gray-400">

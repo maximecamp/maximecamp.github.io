@@ -5,7 +5,7 @@ export const data = {
     about: {
       title: "À propos de moi",
       description1: "Fort de plus de 4 ans d'expérience, je transforme vos idées en solutions web et mobiles performantes et évolutives.",
-      description2: "Ma passion pour l'innovation me permet de créer des applications robustes qui répondent aux besoins complexes des entreprises les plus ambitieuses.",
+      description2: "Ma passion pour l'innovation me permet de créer des applications web et mobiles qui répondent aux besoins complexes des entreprises les plus ambitieuses.",
     },
     services: {
       title: "Mes services",
@@ -21,7 +21,7 @@ export const data = {
     whyMe: {
       title: "Pourquoi me choisir ?",
       items: [
-        "4 années d'expérience technique dans les technologies JavaScript modernes",
+        "Quatre ans d'expérience technique dans les technologies JavaScript modernes",
         "Capacité à traduire des besoins commerciaux complexes en solutions efficaces",
         "Approche centrée sur le client, communication transparente et régulière",
         "Engagement envers la qualité et le respect des délais",
@@ -34,7 +34,7 @@ export const data = {
         { category: "Backend", skills: "Node.js, Express" },
         { category: "Bases de données", skills: "PostgreSQL, MongoDB, MySQL, Redis" },
         { category: "Mobile", skills: "Flutter, React Native" },
-        { category: "DevOps", skills: "Git, Docker, Kubernetes, CI/CD, Gitlab, AWS, Azure, GCP" },
+        { category: "DevOps", skills: "NestJS, Git, Docker, Kubernetes, CI/CD, Gitlab, Amazon Web Services (AWS), Azure, Google Cloud Platform (GCP)" },
       ],
     },
     cv: {
