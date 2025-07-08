@@ -26,6 +26,16 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+  html {
+    font-size: 112.5%; /* 18px */
+  }
+
+  @screen sm {
+    html {
+      font-size: 100%; /* 16px */
+    }
+  }
+
   *,
   ::after,
   ::before,

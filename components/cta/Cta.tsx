@@ -25,7 +25,7 @@ export default function Cta({ cta }: CtaProps) {
                         rel={textContent.buttons[0].url.startsWith('http') ? 'noopener noreferrer' : undefined}
                         className={`w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-base font-semibold rounded-full shadow-md transition-all duration-200 ease-in-out ${textContent.buttons[0].style}`}
                     >
-                        M&apos;envoyer un email
+                        Prendre rendez-vous
                     </a>
             </div>
             <div className="text-center text-base text-gray-500 dark:text-gray-400 space-y-1">

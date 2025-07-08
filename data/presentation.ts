@@ -5,7 +5,7 @@ export const data = {
     about: {
       title: "À propos de moi",
       description1: "Fort de plus de 4 ans d'expérience, je transforme vos idées en solutions web et mobiles performantes et évolutives.",
-      description2: "Ma passion pour l'innovation me permet de créer des applications web et mobiles qui répondent aux besoins complexes des entreprises les plus ambitieuses.",
+      description2: "Mon expertise me permet de créer des applications web et mobiles qui répondent aux besoins complexes des entreprises les plus ambitieuses.",
     },
     services: {
       title: "Mes services",
@@ -34,7 +34,7 @@ export const data = {
         { category: "Backend", skills: "Node.js, Express" },
         { category: "Bases de données", skills: "PostgreSQL, MongoDB, MySQL, Redis" },
         { category: "Mobile", skills: "Flutter, React Native" },
-        { category: "DevOps", skills: "NestJS, Git, Docker, Kubernetes, CI/CD, Gitlab, Amazon Web Services (AWS), Azure, Google Cloud Platform (GCP)" },
+        { category: "DevOps", skills: "Git, Jest, Docker, Kubernetes, CI/CD, Gitlab, AWS, Azure, GCP" },
       ],
     },
     cv: {
