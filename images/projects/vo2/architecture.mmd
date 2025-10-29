@@ -1,0 +1,31 @@
+graph TD
+    subgraph Clients
+        WebApp["Application Web (React)<br><i>Dashboard Chercheurs</i>"]
+        MobileApp["Application Mobile (Ionic/React)<br><i>Sujets</i>"]
+    end
+
+    subgraph "Développement & Intégration Continue"
+        Gitlab["Gitlab CI/CD<br><i>(Tests, Build, Déploiement)</i>"]
+    end
+
+    subgraph "Infrastructure Cloud (AWS)"
+        subgraph Déploiement
+            Docker["Docker"] --> K8s["Kubernetes Cluster"]
+        end
+
+        subgraph "Backend Services"
+            API["API REST (Node.js / Typescript)<br><i>Logique métier / Gestion des données</i>"]
+        end
+
+        subgraph "Base de Données"
+            DB["PostgreSQL<br><i>Données études & sujets</i>"]
+        end
+    end
+
+    WebApp -- "HTTPS" --> K8s
+    MobileApp -- "HTTPS" --> K8s
+    K8s --> API
+    API -- "Accès BDD" --> DB
+
+    Gitlab -- "Déploie les services" --> Docker
+    Docker -- "Exécute les conteneurs sur" --> K8s
