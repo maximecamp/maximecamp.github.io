@@ -1,18 +1,23 @@
-import Calendly from '@/components/Calendly'
+import ContactCard from '@/components/ContactCard'
+import { data as contactCardData } from '@/data/contactpage'
+import { BackToHome, GoToProjects, SectionNavigation } from '@/components/navigation'
 
 export const metadata = {
   title: 'Contact - Maxime Camp',
-  description: 'Prenez rendez-vous avec moi via Calendly.',
+  description: 'Contactez-moi sur LinkedIn, Malt, par email ou en réservant un appel via Calendly.',
 }
 
 export default function ContactPage() {
   return (
-    <section className="relative">
-      <div className="max-w-6xl mx-auto">
-        <div>
-          <Calendly />
-        </div>
-      </div>
-    </section>
+    <>
+      <ContactCard data={contactCardData} />
+      
+      {/* Navigation */}
+      <SectionNavigation 
+        left={<BackToHome />}
+        right={<GoToProjects />}
+        className="mt-8"
+      />
+    </>
   )
 } 

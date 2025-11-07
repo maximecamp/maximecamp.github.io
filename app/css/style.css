@@ -15,6 +15,7 @@
 @theme {
   --font-inter: Inter, sans-serif;
   --font-inter-tight: Inter Tight, sans-serif;
+  --color-light-primary: rgba(253, 240, 237, 1);
 }
 
 /*

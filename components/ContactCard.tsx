@@ -29,18 +29,45 @@ export default function ContactCard({ data }: ContactCardProps) {
                     {data.description}
                 </p>
             </div>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
-                {data.buttons?.map((button) => (
-                    <a
-                        key={button.url}
-                        href={button.url}
-                        target={button.url.startsWith('http') ? '_blank' : undefined}
-                        rel={button.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className={`w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-base font-semibold rounded-full shadow-md transition-all duration-200 ease-in-out ${button.style}`}
-                    >
-                        {button.text}
-                    </a>
-                ))}
+            <div className="flex flex-col justify-center items-center gap-4 mb-6">
+                {data.buttons && data.buttons.length > 1 ? (
+                    <>
+                        <a
+                            key={data.buttons[0].url}
+                            href={data.buttons[0].url}
+                            target={data.buttons[0].url.startsWith('http') ? '_blank' : undefined}
+                            rel={data.buttons[0].url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            className={`w-full sm:w-auto sm:h-9 inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-base text-center text-pretty font-semibold rounded-full shadow-md transition-all duration-200 ease-in-out ${data.buttons[0].style}`}
+                        >
+                            {data.buttons[0].text}
+                        </a>
+                        <div className="flex flex-col sm:flex-row gap-4 w-full">
+                            {data.buttons.slice(1).map((button) => (
+                                <a
+                                    key={button.url}
+                                    href={button.url}
+                                    target={button.url.startsWith('http') ? '_blank' : undefined}
+                                    rel={button.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                    className={`w-full sm:flex-1 h-9 inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-base text-center text-pretty font-semibold rounded-full shadow-md transition-all duration-200 ease-in-out ${button.style}`}
+                                >
+                                    {button.text}
+                                </a>
+                            ))}
+                        </div>
+                    </>
+                ) : (
+                    data.buttons?.map((button) => (
+                        <a
+                            key={button.url}
+                            href={button.url}
+                            target={button.url.startsWith('http') ? '_blank' : undefined}
+                            rel={button.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                            className={`w-full sm:w-auto inline-flex items-center justify-center px-5 py-2.5 border border-transparent text-base text-center text-pretty font-semibold rounded-full shadow-md transition-all duration-200 ease-in-out ${button.style}`}
+                        >
+                            {button.text}
+                        </a>
+                    ))
+                )}
             </div>
             <div className="text-center text-base text-gray-500 dark:text-gray-400 space-y-1">
                 <p className="pt-4">
@@ -52,7 +79,7 @@ export default function ContactCard({ data }: ContactCardProps) {
                     </>
                     )}
                 </p>
-                <p className="font-medium pt-6">
+                <p className="font-medium pt-6 text-balance">
                     <span className="text-green-700 dark:text-green-600 font-semibold">
                         {data.availabilityHighlighted}
                     </span>

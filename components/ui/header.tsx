@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import UserImg from "@/public/images/user-image.jpg";
 import Particles from "./particles";
 import MaltLogo from "@/public/images/svg/malt.svg";
@@ -10,15 +11,21 @@ import { useTheme } from "next-themes";
 
 export default function Header() {
   const pathname = usePathname();
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const { resolvedTheme } = useTheme()
-
+  // Éviter les problèmes d'hydratation
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header className="text-center pt-6">
 
       {/* Particles animation */}
-      {resolvedTheme === 'dark' && <Particles className="absolute inset-0 -z-10" quantity={150} staticity={100} ease={100} />}
+      {mounted && resolvedTheme === 'dark' && (
+        <Particles className="absolute inset-0 -z-10" quantity={150} staticity={100} ease={100} />
+      )}
       
       <div className="flex flex-col sm:flex-row sm:justify-between items-center mb-8 gap-4 sm:gap-0">
         {/* Nav links */}
@@ -49,6 +56,21 @@ export default function Header() {
             >
               Blog
               {pathname.startsWith("/blog") && (
+                <span className="absolute inset-x-0 bottom-0 h-px bg-gray-800 dark:bg-gray-100"></span>
+              )}
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/projects"
+              className={`relative transition-colors ${
+                pathname.startsWith("/projects")
+                  ? "text-gray-800 dark:text-gray-100"
+                  : "text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-100"
+              }`}
+            >
+              Projets
+              {pathname.startsWith("/projects") && (
                 <span className="absolute inset-x-0 bottom-0 h-px bg-gray-800 dark:bg-gray-100"></span>
               )}
             </Link>
@@ -133,8 +155,8 @@ export default function Header() {
           <h1 className="font-inter-tight font-bold text-gray-800 dark:text-gray-100 text-2xl mb-1">
             Maxime Camp
           </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-4">
-            Développeur fullstack avec 4 ans d&apos;expérience, expert en React, Next.js, Node.js et Typescript.
+          <p className="text-lg text-gray-600 dark:text-gray-400 text-balance mb-4">
+            Développeur fullstack avec 4 ans d&apos;expérience. Expert en React, Next.js, Node.js et Typescript.
           </p>
           <a
             className="btn-sm text-gray-800 dark:text-gray-200 bg-white dark:bg-transparent border border-gray-200 dark:border-gray-700 shadow-xs relative before:absolute before:inset-0 before:rounded-[inherit] before:bg-linear-[45deg,transparent_25%,var(--color-white)_50%,transparent_75%,transparent_100%] before:opacity-20 dark:before:opacity-100 dark:before:bg-linear-[45deg,transparent_25%,var(--color-white)_50%,transparent_75%,transparent_100%] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-1500 inline-flex items-center gap-2"

@@ -51,8 +51,14 @@ export function getSortedPostsData(): PostData[] {
   })
 }
 
-export async function getPostData(id: string): Promise<Post> {
+export async function getPostData(id: string): Promise<Post | null> {
   const fullPath = path.join(postsDirectory, `${id}.mdx`)
+  
+  // Check if file exists
+  if (!fs.existsSync(fullPath)) {
+    return null
+  }
+  
   const fileContents = fs.readFileSync(fullPath, 'utf8')
 
   // Use gray-matter to parse the post metadata section

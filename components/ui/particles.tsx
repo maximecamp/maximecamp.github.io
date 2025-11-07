@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { useRef, useEffect, useCallback, useState } from 'react'
 import { useTheme } from 'next-themes'
 import MousePosition from './utils/mouse-position'
 
@@ -39,10 +39,15 @@ export default function Particles({
   const mousePosition = MousePosition()
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
   const canvasSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 })
-  const dpr = typeof window !== 'undefined' ? window.devicePixelRatio : 1
+  const [mounted, setMounted] = useState(false)
+  const dpr = mounted && typeof window !== 'undefined' ? window.devicePixelRatio : 1
 
   const { resolvedTheme } = useTheme()
   const particleColor = useRef('255, 255, 255')
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     if (resolvedTheme === 'dark') {

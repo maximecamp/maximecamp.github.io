@@ -2,6 +2,8 @@ import ArticleList from '@/components/Articles/All/List'
 import { blogpage_text } from '@/data/blogpage'
 import { data as footerContactData } from '@/data/footercontact'
 import ContactCard from '@/components/ContactCard'
+import { BackToHome, GoToProjects, SectionNavigation } from '@/components/navigation'
+
 
 export default function BlogPage() {
   return (
@@ -16,6 +18,12 @@ export default function BlogPage() {
         </div>
       </section>
       <ContactCard data={footerContactData}/>
+      {/* Navigation */}
+      <SectionNavigation 
+        left={<BackToHome />}
+        right={<GoToProjects />}
+        className="mt-12"
+      />
     </>
   )
 }

@@ -57,9 +57,9 @@ export default function Experience({ sectionTitle, items }: ExperienceProps) {
                 }
               }
             }}
-            className={`group relative p-5 rounded-2xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out flex flex-col sm:flex-row items-start sm:items-center gap-6 ${hasDescription ? 'cursor-pointer hover:bg-blue-50 dark:hover:bg-gray-800/[.65] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:focus-visible:ring-blue-400' : ''}`}
+            className={`group relative p-5 rounded-2xl bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-all duration-300 ease-in-out flex flex-col sm:flex-row items-start sm:items-center gap-6 ${hasDescription ? 'cursor-pointer hover:bg-blue-50/[.65] dark:hover:bg-gray-800/[.65] active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:focus-visible:ring-blue-400' : ''}`}
           >
-            <div className="absolute top-5 right-5 sm:static shrink-0 w-10 h-10 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center bg-gray-100 dark:bg-gray-700 shadow-md transition-transform group-hover:scale-105">
+            <div className="absolute top-2 right-2 sm:static shrink-0 w-10 h-10 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center bg-gray-50 dark:bg-gray-700 shadow-md transition-transform group-hover:scale-105">
               {item.icon && <Image src={item.icon} alt={item.title || 'Company Icon'} width={32} height={32} className="w-4 h-4 sm:w-8 sm:h-8" />}
             </div>
             <div className="flex-1 w-full">

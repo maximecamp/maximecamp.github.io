@@ -39,6 +39,13 @@ export const data = {
     },
     cv: {
       text: "Télécharger mon CV",
-      url: "cv/maxime-camp-cv-2025.pdf",
+      url: "",
     }
   };
+
+  /*
+  {
+    text: "Télécharger mon CV",
+    url: "cv/maxime-camp-cv-2025.pdf",
+  }
+  */

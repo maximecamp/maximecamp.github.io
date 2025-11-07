@@ -121,9 +121,11 @@ export default function Presentation({ data }: PresentationProps) {
       </div>
       
 
-      <div className="mt-12 flex justify-center">
-        <CVDownloadButton url={data.cv.url} text={data.cv.text} />
-      </div>
+      {data.cv.url && <>
+        <div className="mt-12 flex justify-center">
+          <CVDownloadButton url={data.cv.url} text={data.cv.text} />
+        </div>
+      </>}
 
     </section>
   );

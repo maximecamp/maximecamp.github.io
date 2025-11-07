@@ -28,12 +28,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       {/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}
       <body
-        className={`${inter.variable} ${inter_tight.variable} font-inter antialiased bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100 tracking-tight`}
+        className={`${inter.variable} ${inter_tight.variable} font-inter antialiased bg-light-primary text-gray-800 dark:bg-gray-950 dark:text-gray-100 tracking-tight`}
       >
         <Theme>
           <div className="overflow-hidden supports-[overflow:clip]:overflow-clip">
             <div className="max-w-[1000px] mx-auto">
-              <div className="w-full bg-gray-50 dark:bg-gray-900 dark:border-x dark:border-gray-800 box-content">
+              <div className="w-full bg-light-primary dark:bg-gray-900 box-content">
                 <div className="px-3 md:px-16">
                   <div className="flex flex-col min-h-screen">
                     <Header />

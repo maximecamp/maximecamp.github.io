@@ -20,7 +20,7 @@ export default function Sources({ sources }: SourcesProps) {
   }
 
   return (
-    <div className="mt-8">
+    <div className="mt-2">
       <div
         role="button"
         tabIndex={isOpen ? -1 : 0}

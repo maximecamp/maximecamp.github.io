@@ -24,7 +24,7 @@ export default function ArticleItem(props: { metadata: { image?: string; logo?: 
             {props.metadata.summary && <div className="grow text-sm text-slate-500 dark:text-slate-400">{props.metadata.summary}</div>}
           </div>
           <div className="text-xs text-slate-500 uppercase mt-2">
-            <FormattedDate dateString={props.metadata.publishedAt} />
+            Publié le <FormattedDate dateString={props.metadata.publishedAt} />
           </div>
         </div>
       </div>

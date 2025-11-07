@@ -17,7 +17,7 @@ export const items = [
     },
     {
       title: 'Spotify likes to Youtube Music',
-      description: 'Un script python pour transférer vos musiques Spotify vers Youtube Music',
+      description: 'Un script python pour transférer vos musiques Spotify vers Youtube Music.',
       link: ''
     }
   ]

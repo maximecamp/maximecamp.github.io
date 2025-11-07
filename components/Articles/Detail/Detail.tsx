@@ -41,20 +41,17 @@ export default function ArticleDetail(props: {
             </Link>
           </div>
 
-          <article>
+          <article className="bg-white dark:bg-transparent rounded-xl p-5 shadow-sm">
             {/* Post header */}
             <header>
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col sm:flex-row items-center justify-between mb-6">
                 
                 {props.post.readingTime && props.post.readingTime > 0 && (
-                  <div className="text-xs sm:text-base mr-4 text-slate-500">
-                    Temps de lecture : {props.post.readingTime} minutes
+                  <div className="inline-flex items-center gap-1 text-xs text-slate-500 mb-2 sm:mb-0">
+                    <span className="uppercase">Temps de lecture:</span> 
+                    <span>{props.post.readingTime} minutes</span>
                   </div>
                 )}
-                
-                <div className="text-xs text-slate-500 uppercase mr-4">
-                  <FormattedDate dateString={props.post.date} />
-                </div>
                 
                 {/* Share buttons */}
                 <ShareButtons postTitle={props.post.title} />
@@ -66,18 +63,23 @@ export default function ArticleDetail(props: {
               {props.children}
             </div>
             
+            {/* Post date */}
+            <div className="text-xs text-slate-500 uppercase ml-1 mt-8">
+              Publié le <FormattedDate dateString={props.post.date} />
+            </div>
+
             {/* Post Sources */}
             {props.post.sources && <Sources sources={props.post.sources} />}
 
-            {/* CTA */}
-            {props.post.cta && 
+          </article>
+
+          {/* CTA */}
+          {props.post.cta && 
             <>
-            <p className="mt-18 text-2xl font-bold">Passez à l&apos;action</p>
+            <p className="mt-16 text-2xl font-bold">Passez à l&apos;action</p>
             <Cta cta={props.post.cta} />
             </>
             }
-
-          </article>
         </div>
       </div>
 

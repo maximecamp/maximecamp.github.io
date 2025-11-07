@@ -7,8 +7,15 @@ interface MousePosition {
 
 export default function useMousePosition(): MousePosition {
   const [mousePosition, setMousePosition] = useState<MousePosition>({ x: 0, y: 0 });
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({ x: event.clientX, y: event.clientY });
     }
@@ -18,7 +25,7 @@ export default function useMousePosition(): MousePosition {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     }
-  }, []);
+  }, [mounted]);
 
   return mousePosition;
 }

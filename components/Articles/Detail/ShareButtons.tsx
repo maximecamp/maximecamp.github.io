@@ -21,7 +21,10 @@ export default function ShareButtons({ postTitle }: { postTitle: string }) {
 
   return (
     <div className="relative">
-      <ul className="inline-flex">
+      <ul className="inline-flex items-center gap-1">
+        <li>
+          <p className="text-xs text-slate-500 uppercase">Partager sur:</p>
+        </li>
         <li>
           <a
             className="flex justify-center items-center text-slate-400 dark:text-slate-500 hover:text-blue-500 dark:hover:text-blue-500 transition duration-150 ease-in-out"
