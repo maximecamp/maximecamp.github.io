@@ -1,0 +1,118 @@
+---
+title: "React Native et WebViews : Quand le JavaScript devient aveugle, le Natif prend le relais"
+date: "2026-02-16"
+logo: "/images/svg/lock.svg"
+excerpt: "La promesse de React Native est séduisante : 'Codez en JavaScript, déployez partout'. Mais dès que l'on touche aux limites du système, on se heurte à un mur."
+reading_time: 6
+sources: [
+  {
+    name: "React Native Networking Limitations (DailyJS)",
+    url: "https://medium.com/dailyjs/network-layer-in-react-native-eec841f11861"
+  },
+  {
+    name: "Android shouldInterceptRequest Documentation",
+    url: "https://developer.android.com/reference/android/webkit/WebViewClient#shouldInterceptRequest"
+  },
+  {
+    name: "React Native New Architecture (JSI vs Bridge)",
+    url: "https://reactnative.dev/architecture/landing-page"
+  },
+  {
+    name: "Custom Native Modules (Callstack)",
+    url: "https://www.callstack.com/services/react-native-modules-development"
+  },
+  {
+    name: "WKURLSchemeHandler (Apple Developer)",
+    url: "https://developer.apple.com/documentation/webkit/wkurlschemehandler"
+  }
+]
+cta: "Besoin d'une réponse à un besoin complexe ?"
+---
+## Introduction
+
+La promesse de React Native est séduisante :  *"Codez en JavaScript, déployez partout."*  
+  
+Pour 90% des applications mobiles, cette promesse est tenue. Mais dès qu'il s'agit d'interagir avec les composants système de bas niveau, comme le moteur de rendu web (WebView), l'abstraction montre ses limites.
+
+Dans le cadre de mon projet Mirage, la création d'un navigateur web sécurisé, je me suis heurté à un défi architectural majeur.
+
+Mirage n'est pas un simple navigateur web. C'est un outil conçu pour deux objectifs précis :
+
+1. **L'optimisation radicale :** Économiser la data et la batterie en bloquant les ressources inutiles (publicités, traceurs).
+2. **La souveraineté de l'utilisateur :** Permettre à l'utilisateur de définir ses propres règles pour contourner les restrictions d'accès ou filtrer le contenu indésirable selon ses propres critères.
+  
+Le problème ? En JavaScript pur, c'est impossible.  
+  
+Une WebView est une boîte noire pour React Native. Votre code JS ne peut ni voir, ni arrêter une requête HTTP spécifique une fois le chargement lancé. Pour réaliser Mirage, j'ai dû enfiler ma casquette d'Ingénieur Natif (Kotlin & Swift) pour construire un pont sur mesure entre React Native et le système du téléphone.
+
+## 1. Le Problème : L'aveuglement du JavaScript
+
+Dans React Native, votre code JS tourne dans un thread à part. Quand vous utilisez un composant WebView, vous déléguez l'affichage au moteur web de l'OS (WebKit sur iOS ou Chromium sur Android).
+
+Le JS peut dire "Charge cette URL". Mais une fois l'ordre donné, le moteur natif prend le relais. Si la page web décide de charger un script de tracking lourd, une vidéo en lecture automatique ou un script de restriction de contenu (paywall, anti-adblock), votre code React Native est aveugle. Il ne le sait pas, et il ne peut pas l'intercepter.
+
+Pour Mirage, je devais redonner le pouvoir à l'utilisateur. Il ne s'agissait pas de masquer une pub après coup (cosmétique), mais d'empêcher physiquement la requête de sortir du téléphone.
+
+## 2. La Solution : Descendre au niveau du Métal
+
+Pour contourner cette limitation, j'ai écrit des Native Modules. J'ai dû implémenter deux stratégies radicalement différentes pour Android et iOS afin d'intercepter le trafic réseau sortant.
+
+### Sur Android :
+
+L'écosystème Android permet une granularité fine via la classe `WebViewClient`. J'ai créé un module natif Kotlin (`WebViewBlockerModule.kt`) qui agit comme un douanier.
+
+* **Le mécanisme :**  
+Je surcharge la méthode `shouldInterceptRequest(view, request)`.  
+À chaque fois que la WebView s'apprête à charger une ressource (image, script, CSS), Android met le chargement en pause et interroge mon module.
+* **L'application des règles utilisateur :**  
+C'est ici que la magie opère. Mon code compare l'URL de la requête aux règles définies par l'utilisateur.
+    * L'utilisateur veut bloquer les réseaux sociaux ?
+    * Il veut interdire le chargement des polices d'écriture pour économiser la data ?
+    * Il a défini une règle personnalisée pour contourner un script de blocage ?
+* **L'action :**
+    * Si l'URL correspond à une règle de blocage : Je retourne immédiatement une `WebResourceResponse` avec un code **403 Forbidden** et un corps vide. La requête est tuée dans l'œuf.
+    * Sinon : Je retourne `null`, et Android poursuit le chargement normal.
+
+Cette approche impérative offre un contrôle total.
+
+### Sur iOS :
+
+Sur iOS, la logique est totalement différente. Apple verrouille l'accès au trafic réseau pour des raisons de sécurité.
+
+* **La fausse piste (WKURLSchemeHandler) :**  
+Intuitivement, on pourrait vouloir reproduire la logique Android. Cependant, Apple interdit l'interception des protocoles standards http et https via cette API. Impossible donc de filtrer le web réel ainsi.
+* **La solution (Content Blocking API) :**  
+J'ai dû utiliser l'API native de blocage de contenu. Au lieu d'intercepter les requêtes une par une, on doit nourrir le système avec une liste de règles pré-compilées.
+
+**L'implémentation :**
+1. Je prends les règles définies par l'utilisateur dans l'interface React.
+2. Je les convertis en JSON structuré.
+3. Je compile ce JSON en une `WKContentRuleList` optimisée (byte code) via `WKContentRuleListStore`.
+4. J'injecte cette liste dans la configuration de la `WKWebView` avant son initialisation.
+
+C'est une méthode déclarative : je donne les ordres au système WebKit et c'est lui qui exécute le filtrage au niveau du noyau, garantissant une performance maximale.
+
+## 3. Le Bridge : Unifier deux mondes pour l'utilisateur
+
+Tout l'enjeu de l'architecture de Mirage a été de créer une interface unifiée pour ces deux comportements divergents. L'utilisateur, lui, se moque de savoir s'il est sur iOS ou Android. Il veut juste cocher une case : *"Bloquer les scripts de tracking"* ou *"Appliquer ma règle personnalisée"*.
+
+J'ai développé une couche d'abstraction JavaScript (`nativeBlockerManager`) qui fait le pont :
+
+* L'utilisateur définit une règle dans l'interface React Native (ex: "Bloquer analytics.google.com").
+* Le Bridge transmet l'info au code natif.
+* Sur Android, cela met à jour la liste en mémoire utilisée par l'intercepteur temps réel.
+* Sur iOS, cela déclenche la recompilation immédiate de la ContentRuleList et le rechargement de la configuration de la WebView.
+
+## Conclusion
+
+Ce projet illustre parfaitement pourquoi la maîtrise des langages natifs (Kotlin/Swift) est indispensable pour un développeur mobile Senior.
+
+Beaucoup de développeurs React Native se seraient contentés d'injecter du JavaScript dans la page pour masquer les éléments après leur chargement. Cela aurait résolu le problème visuel, mais pas le problème de fond (consommation data, batterie et vie privée).
+
+En maîtrisant la couche native, j'ai pu offrir une solution :
+
+* **Performante :** Le filtrage se fait en natif, sans goulot d'étranglement JS.
+* **Robuste :** On utilise les API officielles de chaque OS.
+* **Centrée sur l'utilisateur :** C'est l'utilisateur qui décide ce qui entre ou non dans son téléphone, contournant les restrictions imposées par les sites web.
+
+Ne laissez pas les limitations d'un Framework dicter ce que votre application peut faire ou ne pas faire.

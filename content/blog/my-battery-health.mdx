@@ -1,0 +1,79 @@
+---
+title: "Transformer la donnée brute en argument de vente"
+date: "2026-02-18"
+logo: "/images/svg/mbh.svg"
+excerpt: "Quand j'ai rejoint le projet My Battery Health, la demande initiale semblait simple. Mais en plongeant dans la documentation des APIs constructeurs, j'ai découvert une réalité bien plus complexe."
+reading_time: 4
+sources: [
+  {
+    name: "The Impact of Battery Health on EV Residual Value (Geotab)",
+    url: "https://www.geotab.com/blog/ev-battery-health/"
+  },
+  {
+    name: "Predictive Maintenance in Automotive (McKinsey)",
+    url: "https://www.mckinsey.com/industries/automotive-and-assembly/our-insights/automotive-software-and-electronics-2030"
+  },
+  {
+    name: "Data Visualization for Decision Support (IEEE)",
+    url: "https://www.computer.org/publications/tech-news/trends/data-visualization-decision-making"
+  },
+  {
+    name: "Tesla API Documentation (Unofficial/Community)",
+    url: "https://tesla-api.timdorr.com/"
+  },
+  {
+    name: "SaaS Metrics for B2B (ChartMogul)",
+    url: "https://chartmogul.com/blog/saas-metrics/"
+  }
+]
+cta: "Besoin d'un partenaire technique qui réflechis pour votre réussite ?"
+---
+
+## Introduction
+
+Quand j'ai rejoint la startup My Battery Health, la demande initiale semblait simple :  
+**"Affichez l'état de santé (SOH) des batteries pour aider les garagistes à vendre des véhicules électriques d'occasion."**
+
+Mais en plongeant dans la documentation des APIs constructeurs (Tesla, Stellantis, etc.), j'ai découvert une réalité bien plus complexe. Contrairement à ce qu'on imagine, les constructeurs ne vous donnent pas le SOH sur un plateau. Ils fournissent des données brutes, éparses et parfois bruitées : odomètre, pourcentage de batterie instantané, autonomie estimée, consommation moyenne...
+
+Mon premier défi technique n'était pas l'affichage, mais la reconstruction de la vérité. Il a fallu développer des algorithmes backend (Node.js) capables de croiser ces signaux faibles pour calculer un SOH fiable.
+
+Pourtant, une fois ce chiffre obtenu (ex: "Batterie à 92% de durée de vie"), je me suis rendu compte que cela ne suffisait pas.
+Face à un client qui demande **"C'est bien ou c'est nul pour une voiture de 3 ans ?"**, le garagiste restait muet. Le chiffre seul manquait de contexte.
+
+## 1. La décision stratégique
+
+J'ai proposé de pivoter d'un outil de constat vers un outil d'aide à la décision.
+Pour cela, j'ai dû orchestrer une fusion de données massive. Nous ne pouvions pas nous baser uniquement sur le véhicule testé.
+
+J'ai conçu une architecture capable d'agréger en temps réel :
+
+* **Nos propres données :** L'historique de tous les tests et calculs déjà effectués dans la base My Battery Health.
+* **Les données partenaires :** Le Big Data fourni par la startup Tesla4U.
+
+L'objectif ?  
+Créer un référentiel statistique unique pour dire :  
+**"Ce véhicule n'est pas juste à 92%. Il est dans le top 10% des véhicules similaires sur le marché."**
+
+## 2. L'exécution technique
+
+Traiter ces données est une chose, les rendre intelligibles sur un certificat PDF statique en est une autre.
+J'ai fait le choix technique de générer des graphiques vectoriels SVG côté serveur.  
+Pourquoi pas une librairie JS classique ? Pour la précision et la légèreté.
+
+* **Analyse Comparative :** J'ai développé un script qui positionne le véhicule testé au sein d'un nuage de point (sous la forme d'une zone colorée) représentant l'ensemble de la flotte (données MBH + Tesla4U). Cela crée une **zone de confiance** visuelle immédiate.
+* **Analyse Prédictive :** En appliquant des modèles de régression sur cet historique agrégé, j'ai pu tracer la courbe de dégradation future.
+
+## 3. L'impact business (ROI)
+
+Cette proposition d'architecture a transformé le produit.
+Le certificat n'était plus un simple document technique, c'était un outil de closing commercial.
+
+* **Aide à la vente :** Le garagiste peut prouver la valeur résiduelle du véhicule grâce à la courbe prédictive.
+* **Valorisation SaaS :** Cette "intelligence" par rapport à la concurrence a justifié un pricing premium et des abonnements récurrents.
+
+## Conclusion
+
+Sur ce projet, ma valeur ajoutée a été de combler le fossé entre la donnée brute (APIs constructeurs) et le besoin business (vendre).
+
+Calculer un SOH demande de la rigueur algorithmique. Mais le transformer en outil prédictif demande une **vision produit**. C'est cette double compétence que j'apporte à mes clients.

@@ -32,7 +32,7 @@ export default function LatestArticles() {
                 <div className="flex items-center justify-center w-full h-[150px] aspect-video">
                   <div className={`absolute inset-0 w-full h-full rounded-[inherit] blur-[2px] opacity-80`} aria-hidden="true" />
                   <div className="absolute inset-0 flex items-center justify-center w-full max-w-3xl mx-auto">
-                    <h3 className="sm:px-2 font-inter-tight text-lg font-semibold text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 flex flex-col items-center justify-center text-center">
+                    <h3 className="px-5 sm:px-3 font-inter-tight text-lg font-semibold text-gray-800 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 flex flex-col items-center justify-center text-center">
                       {item.title}
                     </h3>
                   </div>

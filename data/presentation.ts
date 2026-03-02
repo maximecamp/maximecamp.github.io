@@ -4,15 +4,15 @@ export const data = {
     },
     about: {
       title: "À propos de moi",
-      description1: "Fort de plus de 4 ans d'expérience, je transforme vos idées en solutions web et mobiles performantes et évolutives.",
+      description1: "Fort de plus de 6 ans d'expérience, je transforme vos idées en solutions web et mobiles performantes et évolutives.",
       description2: "Mon expertise me permet de créer des applications web et mobiles qui répondent aux besoins complexes des entreprises les plus ambitieuses.",
     },
     services: {
       title: "Mes services",
       items: [
-        "Développement d'applications web sur mesure",
+        "Développement de sites et d'applications web sur mesure",
         "Conception et développement d'API",
-        "Développement d'applications mobiles cross-platform",
+        "Développement d'applications mobiles cross-platform Android & iOS",
         "Intégration de solutions de paiement",
         "Support technique et maintenance",
         "Mise en œuvre du pipeline CI/CD"
@@ -21,7 +21,7 @@ export const data = {
     whyMe: {
       title: "Pourquoi me choisir ?",
       items: [
-        "Quatre ans d'expérience technique dans les technologies JavaScript modernes",
+        "Six ans d'expérience technique dans les technologies JavaScript modernes",
         "Capacité à traduire des besoins commerciaux complexes en solutions efficaces",
         "Approche centrée sur le client, communication transparente et régulière",
         "Engagement envers la qualité et le respect des délais",

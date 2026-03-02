@@ -44,7 +44,7 @@ export default function Cta({ cta }: CtaProps) {
         
             <hr className="my-8 border-gray-200 dark:border-gray-700/50" />
             <div className="text-center">
-                <p className="text-base m-4 max-w-2xl mx-auto inline-flex relative hover:text-blue-600 dark:hover:text-blue-400 duration-150 ease-out before:scale-x-0 before:origin-center before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:translate-y-1/4 before:-rotate-2 hover:before:scale-100 before:duration-150 before:ease-in-out">
+                <p className="text-base m-4 max-w-2xl mx-auto inline-flex relative text-green-700 hover:text-green-600 dark:hover:text-green-400 duration-150 ease-out before:scale-x-0 before:origin-center before:absolute before:inset-0 before:bg-sky-200 dark:before:bg-sky-500 before:opacity-30 before:-z-10 before:translate-y-1/4 before:-rotate-2 hover:before:scale-100 before:duration-150 before:ease-in-out">
                     <Link href="/" className="hover:underline">Découvrez mes services de développement sur-mesure</Link>
                 </p>
             </div>

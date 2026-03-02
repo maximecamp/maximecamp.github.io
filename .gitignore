@@ -37,3 +37,7 @@ next-env.d.ts
 
 # dccache
 .dccache
+
+# personal files
+/public/cv
+README.local.md

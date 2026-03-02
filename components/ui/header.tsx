@@ -156,7 +156,7 @@ export default function Header() {
             Maxime Camp
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-400 text-balance mb-4">
-            Développeur fullstack avec 4 ans d&apos;expérience. Expert en React, Next.js, Node.js et Typescript.
+            Développeur fullstack avec 6 ans d&apos;expérience. Expert en React, Next.js, Node.js et Typescript.
           </p>
           <a
             className="btn-sm text-gray-800 dark:text-gray-200 bg-white dark:bg-transparent border border-gray-200 dark:border-gray-700 shadow-xs relative before:absolute before:inset-0 before:rounded-[inherit] before:bg-linear-[45deg,transparent_25%,var(--color-white)_50%,transparent_75%,transparent_100%] before:opacity-20 dark:before:opacity-100 dark:before:bg-linear-[45deg,transparent_25%,var(--color-white)_50%,transparent_75%,transparent_100%] before:bg-[length:250%_250%,100%_100%] before:bg-[position:200%_0,0_0] before:bg-no-repeat before:[transition:background-position_0s_ease] hover:before:bg-[position:-100%_0,0_0] hover:before:duration-1500 inline-flex items-center gap-2"
